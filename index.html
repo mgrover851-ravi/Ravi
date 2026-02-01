@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff4d6d, #ff9a9e);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 30px;
+      text-align: center;
+      width: 340px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      animation: pop 1s ease;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
+      color: #ff4d6d;
+      animation: fadeIn 2s ease;
+    }
+
+    p {
+      font-size: 18px;
+      color: #555;
+      animation: fadeIn 3s ease;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 14px 32px;
+      font-size: 16px;
+      border-radius: 30px;
+      border: none;
+      background: #ff4d6d;
+      color: white;
+      cursor: pointer;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      color: rgba(255,255,255,0.85);
+      font-size: 22px;
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.6);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card" id="card">
+    <h1>💖 Happy Valentine’s Day 💖</h1>
+    <p>
+      Dear <strong>Ravi</strong> 🌹 <br><br>
+      From laughter to silence,<br>
+      from today to forever…<br>
+      you are my favorite part of life 💕
+    </p>
+
+    <button onclick="nextStep()">Next 💌</button>
+  </div>
+
+  <script>
+    function nextStep() {
+      document.getElementById("card").innerHTML = `
+        <h1>💍 Will you marry me? 💍</h1>
+        <p>
+          Ravi, I don’t want a perfect life…<br>
+          I want a life with <strong>you</strong> ❤️
+        </p>
+        <button onclick="yesForever()">YES 💖</button>
+      `;
+    }
+
+    function yesForever() {
+      document.body.innerHTML = `
+        <div style="color:white;text-align:center;">
+          <h1 style="font-size:42px;">💍 SHE SAID YES 💍</h1>
+          <h2>Ravi, forever starts now ❤️</h2>
+          <p>Our story just became eternal 🌹</p>
+        </div>
+      `;
+    }
+
+    // floating hearts
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 24 + 16 + "px";
+      heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 7000);
+    }, 300);
+  </script>
+
+</body>
+</html>
